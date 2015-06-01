@@ -10,21 +10,38 @@ var {
   StyleSheet,
   Text,
   View,
+  TouchableHighlight
 } = React;
 
+var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
+
 var hav2 = React.createClass({
-  render: function() {
+  getInitialState() {
+    return {
+      result: '...'
+    }
+  },
+
+  login() {
+    FacebookLoginManager.newSession((error, info) => {
+      if (error) {
+        this.setState({result: error});
+      } else {
+        this.setState({result: info});
+      }
+    });
+  },
+
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <TouchableHighlight onPress={this.login}>
+          <Text style={styles.welcome}>
+            Facebook Login
+          </Text>
+        </TouchableHighlight>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          {this.state.result}
         </Text>
       </View>
     );
