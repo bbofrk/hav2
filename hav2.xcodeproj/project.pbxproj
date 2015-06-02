@@ -20,6 +20,7 @@
 		0B85E8B61B1C6E0F003B559D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B85E8B31B1C6E0F003B559D /* FBSDKShareKit.framework */; };
 		0B85E8C31B1C704B003B559D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B85E8C21B1C704B003B559D /* Bolts.framework */; };
 		0B85E8C61B1C70EC003B559D /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B85E8C51B1C70EC003B559D /* FacebookLoginManager.m */; };
+		0B8E5C161B1DD1E8003991ED /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8E5C0C1B1DD1B7003991ED /* libRCTFBLogin.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -81,6 +82,13 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = hav2;
 		};
+		0B8E5C0B1B1DD1B7003991ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B8E5C051B1DD1B6003991ED /* RCTFBLogin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F3A6B5B1ACFBCC500CA65F7;
+			remoteInfo = RCTFBLogin;
+		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
@@ -135,6 +143,7 @@
 		0B85E8C21B1C704B003B559D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		0B85E8C41B1C70C8003B559D /* FacebookLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
 		0B85E8C51B1C70EC003B559D /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
+		0B8E5C051B1DD1B6003991ED /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* hav2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hav2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8E5C161B1DD1E8003991ED /* libRCTFBLogin.a in Frameworks */,
 				0B85E8C31B1C704B003B559D /* Bolts.framework in Frameworks */,
 				0B85E8B41B1C6E0F003B559D /* FBSDKCoreKit.framework in Frameworks */,
 				0B85E8B51B1C6E0F003B559D /* FBSDKLoginKit.framework in Frameworks */,
@@ -247,6 +257,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0B8E5C061B1DD1B6003991ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B8E5C0C1B1DD1B7003991ED /* libRCTFBLogin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +316,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				0B8E5C051B1DD1B6003991ED /* RCTFBLogin.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302AF1ABCB8E700DB3ED1 /* RCTAdSupport.xcodeproj */,
@@ -420,6 +439,10 @@
 					ProjectRef = 00C302AF1ABCB8E700DB3ED1 /* RCTAdSupport.xcodeproj */;
 				},
 				{
+					ProductGroup = 0B8E5C061B1DD1B6003991ED /* Products */;
+					ProjectRef = 0B8E5C051B1DD1B6003991ED /* RCTFBLogin.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -505,6 +528,13 @@
 			fileType = archive.ar;
 			path = libRCTVibration.a;
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0B8E5C0C1B1DD1B7003991ED /* libRCTFBLogin.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBLogin.a;
+			remoteRef = 0B8E5C0B1B1DD1B7003991ED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
