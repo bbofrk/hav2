@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var FBLogin = require('react-native-facebook-login');
+var LinearGradient = require('react-native-linear-gradient');
 var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
 
 var {
@@ -37,7 +38,7 @@ var hav2 = React.createClass({
   render() {
     var _this = this;
     return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#80E0E2', '#FFC0CB']} style={styles.linearGradient}>
         <FBLogin style={{ marginBottom: 10, }}
           permissions={["email","user_friends"]}
           onLogin={function(data){
@@ -70,17 +71,16 @@ var hav2 = React.createClass({
             console.log(data);
           }}
         />
-      </View>
+      </LinearGradient>
     );
   }
 });
 
 var styles = StyleSheet.create({
-  container: {
+  linearGradient: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#80E0E2',
   },
   welcome: {
     fontSize: 20,
