@@ -14,7 +14,6 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
 } = React;
 
 
@@ -39,7 +38,11 @@ var hav2 = React.createClass({
     var _this = this;
     return (
       <LinearGradient colors={['#80E0E2', '#FFC0CB']} style={styles.linearGradient}>
-        <FBLogin style={{ marginBottom: 10, }}
+        <Text style={styles.titleOne}>Why show Gratitude?</Text>
+        <Text style={styles.titleOne}>Cause you</Text>
+        <Text style={styles.titleTwo}>Hav2</Text>
+
+        <FBLogin style={styles.loginButton}
           permissions={["email","user_friends"]}
           onLogin={function(data){
             console.log("Logged in!");
@@ -82,16 +85,17 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  titleOne: {
+    fontFamily: 'Allura-Regular',
+    fontSize: 35,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  titleTwo: {
+    fontSize: 40,
+    fontWeight: 'bold'
   },
+  loginButton: {
+    marginTop: 30
+  }
 });
 
 AppRegistry.registerComponent('hav2', () => hav2);
