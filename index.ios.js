@@ -5,6 +5,9 @@
 'use strict';
 
 var React = require('react-native');
+var Parse = require('parse').Parse;
+Parse.initialize('NbTDXnwo9JwdCIz6LAIGEJxPqutcFnpZSolxi4Wo', 'zfSErEJxguylcH9lnHsjWfZGV4mCwHWPkJexnlX7');
+var ParseReact = require('parse-react');
 var FBLogin = require('react-native-facebook-login');
 var LinearGradient = require('react-native-linear-gradient');
 var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
@@ -47,7 +50,13 @@ var hav2 = React.createClass({
           onLogin={function(data){
             console.log("Logged in!");
             console.log(data);
-            _this.setState({ user : data.credentials });
+            Parse.User._logInWith('facebook', {
+              authData: {
+                id: data.userId,
+                access_token: data.token,
+                expiration_date: data.tokenExpirationDate
+              }
+            });
           }}
           onLogout={function(){
             console.log("Logged out.");
