@@ -6,7 +6,7 @@
 
 var React = require('react-native');
 var Parse = require('parse').Parse;
-Parse.initialize('NbTDXnwo9JwdCIz6LAIGEJxPqutcFnpZSolxi4Wo', 'zfSErEJxguylcH9lnHsjWfZGV4mCwHWPkJexnlX7');
+Parse.initialize('NbTDXnwo9JwdCIz6LAIGEJxPqutcFnpZSolxi4Wo', 'yPgSpQoouc95OY70CYrUoUM2zBWkbOfpVz9uPFAx');
 var ParseReact = require('parse-react');
 var FBLogin = require('react-native-facebook-login');
 var LinearGradient = require('react-native-linear-gradient');
@@ -26,17 +26,34 @@ var hav2 = React.createClass({
       result: '...'
     }
   },
+  handleLogin(fbData) {
+    var credentials = fbData.credentials;
+    let authData = {
+      id: credentials.userId,
+      access_token: credentials.token,
+      expiration_date: credentials.tokenExpirationDate
+    };
+    console.log(credentials);
+    Parse.FacebookUtils.logIn(authData, {
+      success: () => {
+        this.setState({loadingCurrentUser: false});
+      },
+      error: (user, error) => {
+        console.log(error);
 
-  login() {
-    FacebookLoginManager.newSession((error, info) => {
-      if (error) {
-        this.setState({result: error});
-      } else {
-        this.setState({result: info});
+        switch (error.code) {
+          case Parse.Error.INVALID_SESSION_TOKEN:
+            Parse.User.logOut().then(() => {
+              this.handleLogin(credentials);
+            });
+            break;
+          default:
+            this.setState({loadingCurrentUser: false});
+            alert(error.message);
+        }
       }
     });
   },
-
   render() {
     var _this = this;
     return (
@@ -47,26 +64,12 @@ var hav2 = React.createClass({
 
         <FBLogin style={styles.loginButton}
           permissions={["email","user_friends"]}
-          onLogin={function(data){
-            console.log("Logged in!");
-            console.log(data);
-            Parse.User._logInWith('facebook', {
-              authData: {
-                id: data.userId,
-                access_token: data.token,
-                expiration_date: data.tokenExpirationDate
-              }
-            });
-          }}
+          onLogin={this.handleLogin}
           onLogout={function(){
             console.log("Logged out.");
             _this.setState({ user : null });
           }}
-          onLoginFound={function(data){
-            console.log("Existing login found.");
-            console.log(data);
-            _this.setState({ user : data.credentials });
-          }}
+          onLoginFound={this.handleLogin}
           onLoginNotFound={function(){
             console.log("No user logged in.");
             _this.setState({ user : null });
