@@ -11,6 +11,7 @@ var ParseReact = require('parse-react');
 var FBLogin = require('react-native-facebook-login');
 var LinearGradient = require('react-native-linear-gradient');
 var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
+var Main = require('./App/Components/Main');
 
 var {
   AppRegistry,
@@ -21,12 +22,12 @@ var {
 
 
 var hav2 = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
     return {
       result: '...'
     }
   },
-  handleLogin(fbData) {
+  handleLogin: function(fbData) {
     var credentials = fbData.credentials;
     let authData = {
       id: credentials.userId,
@@ -54,10 +55,18 @@ var hav2 = React.createClass({
       }
     });
   },
-  render() {
-    var _this = this;
+  renderAppView: function(){
     return (
-      <LinearGradient colors={['#80E0E2', '#FFC0CB']} style={styles.linearGradient}>
+      <Main />
+    );
+  },
+  render: function() {
+    var _this = this;
+    if (!this.state.loadingCurrentUser) {
+      return this.renderAppView();
+    }
+    return (
+      <LinearGradient colors={['#7AC8DB', '#EFF0ED']} style={styles.linearGradient}>
         <Text style={styles.titleOne}>Why show Gratitude?</Text>
         <Text style={styles.titleOne}>Cause you</Text>
         <Text style={styles.titleTwo}>Hav2</Text>
