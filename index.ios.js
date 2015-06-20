@@ -7,7 +7,6 @@
 var React = require('react-native');
 var Parse = require('parse').Parse;
 Parse.initialize('NbTDXnwo9JwdCIz6LAIGEJxPqutcFnpZSolxi4Wo', 'yPgSpQoouc95OY70CYrUoUM2zBWkbOfpVz9uPFAx');
-var ParseReact = require('parse-react');
 var FBLogin = require('react-native-facebook-login');
 var LinearGradient = require('react-native-linear-gradient');
 var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
@@ -34,14 +33,11 @@ var hav2 = React.createClass({
       access_token: credentials.token,
       expiration_date: credentials.tokenExpirationDate
     };
-    console.log(credentials);
     Parse.FacebookUtils.logIn(authData, {
       success: () => {
         this.setState({loadingCurrentUser: false});
       },
       error: (user, error) => {
-        console.log(error);
-
         switch (error.code) {
           case Parse.Error.INVALID_SESSION_TOKEN:
             Parse.User.logOut().then(() => {
@@ -55,18 +51,21 @@ var hav2 = React.createClass({
       }
     });
   },
-  renderAppView: function(){
-    return (
-      <Main />
-    );
-  },
+
   render: function() {
-    var _this = this;
+    let blue = '#7AC8DB';
+    let white = '#EFF0ED';
     if (!this.state.loadingCurrentUser) {
-      return this.renderAppView();
+      return(
+        <Main
+          backgroundColor1={blue}
+          backgroundColor2={white}
+        />
+      )
     }
+    var _this = this;
     return (
-      <LinearGradient colors={['#7AC8DB', '#EFF0ED']} style={styles.linearGradient}>
+      <LinearGradient colors={[blue, white]} style={styles.linearGradient}>
         <Text style={styles.titleOne}>Why show Gratitude?</Text>
         <Text style={styles.titleOne}>Cause you</Text>
         <Text style={styles.titleTwo}>Hav2</Text>
