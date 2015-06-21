@@ -8,8 +8,10 @@
   "dependencies": {
     "parse": "^1.4.2",
     "parse-react": "^0.3.1",
-    "react-native": "^0.4.4",
+    "react-native": "^0.5.0",
     "react-native-facebook-login": "^0.4.6",
-    "react-native-linear-gradient": "^0.3.1"
+    "react-native-icons": "^0.1.0",
+    "react-native-linear-gradient": "^0.3.1",
+    "react-native-scrollable-tab-view": "^0.1.6"
   }
 }
